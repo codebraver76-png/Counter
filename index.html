@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title><link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Countdown</h1>
+  <h1 id="timer">10</h1>
+
+  <button class="start" onclick="start()">Start</button>
+  <button class="stop" onclick="stop()">Stop</button>
+  <button class="reset" onclick="reset()">Reset</button>
+</div>
+
+<script>
+  let timeLeft = 10;
+  let timer = 0;
+
+  function start() {
+    if (timer !== 0) return;
+
+    timer = setInterval(function () {
+      timeLeft = timeLeft - 1;
+      document.getElementById("timer").innerHTML = timeLeft;
+
+      if (timeLeft == 0) {
+        clearInterval(timer);
+        timer = 0;
+        document.getElementById("timer").innerHTML = "Time's up!";
+      }
+    }, 1000);
+  }
+
+  function stop() {
+    clearInterval(timer);
+    timer = 0;
+  }
+
+  function reset() {
+    clearInterval(timer);
+    timer = 0;
+    timeLeft = 10;
+    document.getElementById("timer").innerHTML = timeLeft;
+  }
+</script>
+
+</body>
+</html>
